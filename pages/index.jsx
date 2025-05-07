@@ -1,6 +1,6 @@
 
 
-
+import styles from "./page.module.css"
 export async function getServerSideProps() {
   try {
     const res = await fetch('https://fakerestapi.azurewebsites.net/api/v1/Books');
@@ -9,29 +9,35 @@ export async function getServerSideProps() {
 
     return { props: { books } };
   } catch (error) {
-    return { props: { books: [], error: 'Failed to load books.' } };
+    return { props: { books: [], error: 'ERROR BRO PLEASE CHECK AGAIN YOUR CODE' } };
   }
 }
 
 export default function Home({ books, error }) {
   return (
-    <div style={{ padding: '2rem' }}>
-      <h1>Book List (SSR)</h1>
-      <p>This page uses <strong>Server-Side Rendering (SSR)</strong>.</p>
-      {error ? (
-        <p style={{ color: 'red' }}>{error}</p>
-      ) : (
-        <ul style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', gap: '1rem' }}>
-          {books.map(book => (
-            <li key={book.id} style={{ border: '1px solid #ccc', padding: '1rem' }}>
-              <h3>{book.title}</h3>
-              <p><strong>Author:</strong> {book.excerpt}</p>
-              <p>{book.description.substring(0, 100)}...</p>
-              <a href={`/books/${book.id}`}>View Details</a>
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
+    <body style={{ backgroundColor: "gray" }}>
+      <div style={{ padding: "100px" }}>
+        <h1 style={{ display: "flex", justifyContent: "center", marginBottom: "100px", fontSize: "50px" }}>
+          Book List (SSR)</h1>
+        <div style={{ fontSize: "20px" }}>
+          <p>This page uses <strong>Server-Side Rendering (SSR)</strong>.</p>
+          <p>All books made by <strong>ME.</strong></p>
+        </div>
+        {error ? (
+          <p style={{ color: 'red' }}>{error}</p>
+        ) : (
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 3fr))', gap: '100px' }}>
+            {books.map(book => (
+              <div key={book.id} className={styles.allbooks}>
+                <h3>{book.title}</h3>
+                <p><strong>Author the book:</strong> {book.excerpt}</p>
+                <p>{book.description.substring()}.......</p>
+                <a href={`/books/${book.id}`}>Check details...</a>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </body>
   );
 }

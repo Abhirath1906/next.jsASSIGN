@@ -1,5 +1,5 @@
 
-import styles from "./page.module.css";
+import styles from "../page.module.css"
 import { useRouter } from 'next/router';
 
 export async function getStaticPaths() {
@@ -24,7 +24,7 @@ export async function getStaticProps({ params }) {
 
     return {
       props: { book },
-      revalidate: 60, // optional: re-generate after 60s
+      revalidate: 30,
     };
   } catch (error) {
     return { notFound: true };
@@ -40,14 +40,18 @@ export default function BookDetail({ book }) {
   }
 
   return (
-    <div style={{ padding: '2rem' }}>
-      <h1>Book Details (SSG + Fallback)</h1>
-      <p>This page uses <strong>Static Site Generation (SSG)</strong> with dynamic fallback.</p>
-      <h2>{book.title}</h2>
-      <p><strong>Author:</strong> {book.excerpt}</p>
-      <p><strong>Published:</strong> {new Date(book.publishDate).toLocaleDateString()}</p>
-      <p><strong>Page Count:</strong> {book.pageCount}</p>
-      <p><strong>Description:</strong> {book.description}</p>
-    </div>
+    <body style={{ backgroundColor: "gray" }}>
+      <div className={styles.Divdetails}>
+        <div style={{marginTop:"20px"}}>
+          <h1 style={{display:"flex",justifyContent:"center",marginBottom:"50px"}}>Book Details (SSG + Fallback)</h1>
+          <p>This page uses <strong>Static Site Generation (SSG)</strong> with dynamic fallback.</p>
+          <h2>{book.title}</h2>
+          <p><strong>Author:</strong> {book.description}</p>
+          <p><strong>Published:</strong> {new Date(book.publishDate).toLocaleDateString()}</p>
+          <p><strong>Page Count:</strong> {book.pageCount}</p>
+          <p><strong>Description:</strong> {book.excerpt}</p>
+        </div>
+      </div>
+    </body>
   );
 }

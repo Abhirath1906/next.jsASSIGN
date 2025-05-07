@@ -1,4 +1,4 @@
-.page {
+/* .page {
   --gray-rgb: 0, 0, 0;
   --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
   --gray-alpha-100: rgba(var(--gray-rgb), 0.05);
@@ -106,10 +106,10 @@ a.secondary {
 
 .footer img {
   flex-shrink: 0;
-}
+} */
 
 /* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
+/* @media (hover: hover) and (pointer: fine) {
   a.primary:hover {
     background: var(--button-primary-hover);
     border-color: transparent;
@@ -165,4 +165,32 @@ a.secondary {
   .logo {
     filter: invert();
   }
+} */
+
+
+/* .main {
+  display: 'grid';
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: '1rem'
+} */
+
+
+
+
+.allbooks{
+  border: 2px solid black;
+  padding: 30px;
+  background-color: aliceblue;
+  border-radius: 20px;
+}
+
+.Divdetails{
+  display: grid;
+  padding: 50px;
+  background-color: aliceblue;
+  border-radius: 30px;
+  margin-top: 30px;
+  height: 500px;
+  width: auto;
+  font-size: 20px;
 }
