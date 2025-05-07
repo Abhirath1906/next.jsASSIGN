@@ -4,12 +4,12 @@ import styles from "./page.module.css"
 export async function getServerSideProps() {
   try {
     const res = await fetch('https://fakerestapi.azurewebsites.net/api/v1/Books');
-    if (!res.ok) throw new Error('Failed to fetch');
+    // if (!res.ok) throw new Error('Failed to fetch');
     const books = await res.json();
 
     return { props: { books } };
   } catch (error) {
-    return { props: { books: [], error: 'ERROR BRO PLEASE CHECK AGAIN YOUR CODE' } };
+    return { props: { books: [], error: 'ERROR BRO PLEASE CHECK AGAIN YOUR INTERNET' } };
   }
 }
 

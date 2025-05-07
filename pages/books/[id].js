@@ -17,14 +17,14 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   try {
     const res = await fetch(`https://fakerestapi.azurewebsites.net/api/v1/Books/${params.id}`);
-    if (!res.ok) {
-      return { notFound: true };
-    }
+    // if (!res.ok) {
+    //   return { notFound: true };
+    // }
     const book = await res.json();
 
     return {
       props: { book },
-      revalidate: 30,
+      revalidate: 30, // bakal ngerender atau nge update setiap 30 detik (opsional)
     };
   } catch (error) {
     return { notFound: true };
